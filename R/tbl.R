@@ -44,7 +44,7 @@ datatable2 <- function(x, vars = NULL, opts = NULL, ...) {
     ...,
     escape = -2,
     options = opts,
-    callback = DT::JS(.callback2(x = x, pos = c(0, pos)))
+    callback = DT::JS(callback2(x = x, pos = c(0, pos)))
   )
 }
 
@@ -56,11 +56,11 @@ datatable2 <- function(x, vars = NULL, opts = NULL, ...) {
 #' @return
 #'
 #' @examples
-.callback2 <- function(x, pos = NULL) {
+callback2 <- function(x, pos = NULL) {
 
   part1 <- "table.column(1).nodes().to$().css({cursor: 'pointer'});"
 
-  part2 <- .child_row_table2(x, pos = pos)
+  part2 <- child_row_table2(x, pos = pos)
 
   part3 <-
     "
@@ -86,7 +86,7 @@ datatable2 <- function(x, vars = NULL, opts = NULL, ...) {
 #' @return
 #'
 #' @examples
-.child_row_table2 <- function(x, pos = NULL) {
+child_row_table2 <- function(x, pos = NULL) {
 
   names_x <- paste0(names(x), ":")
   text <- "
@@ -107,7 +107,7 @@ datatable2 <- function(x, vars = NULL, opts = NULL, ...) {
       return text;};"
   )
 }
-library(purrr)
+
 datatable2_test <- function(x) {
   datatable2(
     x = coa,
