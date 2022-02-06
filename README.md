@@ -2,6 +2,10 @@
 
 finance intellegence
 
+## Как установить
+
+`remotes::install_github("Pirshtuk/fi")`
+
 ## Как собирал пакет:
 
 Добавил пакеты с помощью `usethis::use_package("data.table")`

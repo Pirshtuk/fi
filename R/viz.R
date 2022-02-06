@@ -191,6 +191,21 @@ viz_lines_wide_js <- function(dt, x, y1,y2, title="",title_x="") {
     e_title(title, "USD")
 }
 
+#' Vizualisation with JavaScript: 4 lines from wide table with 4 columns for each measure
+#'
+#' @param dt
+#' @param x  X axis
+#' @param y1 column name for first measure
+#' @param y2
+#' @param y3
+#' @param y4
+#' @param title title for Vizualisation
+#' @param title_x title for X axis
+#'
+#' @return
+#' @export
+#'
+#' @examples
 viz_lines_wide4_js <- function(dt, x, y1,y2,y3,y4, title="",title_x="") {
   #print(deparse(substitute(x)))
   dt |>
