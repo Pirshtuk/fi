@@ -209,14 +209,14 @@ viz_lines_wide_js <- function(dt, x, y1,y2, title="",title_x="") {
 viz_lines_wide4_js <- function(dt, x, y1,y2,y3,y4, title="",title_x="") {
   #print(deparse(substitute(x)))
   dt |>
-    e_charts_(x) |>
-    e_line_(y1,symbol ="none") |>
-    e_line_(y2,symbol ="none") |>
-    e_line_(y3,symbol ="none") |>
-    e_line_(y4,symbol ="none") |>
-    e_datazoom(type = "slider") |>
-    e_tooltip(trigger = "axis") |>
-    e_title(title, "USD")
+    echarts4r::e_charts_(x) |>
+    echarts4r::e_line_(y1,symbol ="none") |>
+    echarts4r::e_line_(y2,symbol ="none") |>
+    echarts4r::e_line_(y3,symbol ="none") |>
+    echarts4r::e_line_(y4,symbol ="none") |>
+    echarts4r::e_datazoom(type = "slider") |>
+    echarts4r::e_tooltip(trigger = "axis") |>
+    echarts4r::e_title(title, "USD")
 }
 
 #' График факта, прогноза и прогнозного интервала
