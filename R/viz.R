@@ -16,13 +16,13 @@ my_org_theme <- function(variables) {
 #' @return
 #' @export
 #'
-#' @examples viz_cohort(my_org_data)
-#'           viz_cohort(my_org_data, color = COHORT, linetype = COHORT)
+#' @examples #viz_cohort("my_org_data")
+#'           #viz_cohort("my_org_data", color = COHORT, linetype = COHORT)
 #'
-#'           my_org_data %>%
-#'             mutate(COHORT_QUARTER = quarter(DATE_COHORT_START)) %>%
-#'             viz_cohort(my_org_data) +
-#'             facet_grid(rows = vars(COHORT_QUARTER))
+#           my_org_data %>%
+#             mutate(COHORT_QUARTER = quarter(DATE_COHORT_START)) %>%
+#             viz_cohort(my_org_data) +
+#             facet_grid(rows = vars(COHORT_QUARTER))
 
 
 viz_cohort <- function(data,
@@ -117,18 +117,18 @@ validate_mypackage_data <- function(vbl_names) {
 #' @examples
 viz_lines <- function(dt, x, y, z,title="",title_x="") {
   dt |>
-    ggplot() +
-    aes(x = x, y = y, fill = z) +
-    geom_area(size = 0.5) +
-    scale_fill_hue(direction = 1) +
-    labs(
+    ggplot2::ggplot() +
+    ggplot2::aes(x = x, y = y, fill = z) +
+    ggplot2::geom_area(size = 0.5) +
+    ggplot2::scale_fill_hue(direction = 1) +
+    ggplot2::labs(
       y = "",
       x = title_x,
       title = title,
       fill=""
     ) +
-    theme_classic() +
-    theme(legend.position = "top")
+    ggplot2::theme_classic() +
+    ggplot2::theme(legend.position = "top")
 }
 
 #' Статичный график двух и более переменных (столбики ggplot)
@@ -144,15 +144,15 @@ viz_lines <- function(dt, x, y, z,title="",title_x="") {
 #' @examples
 viz_bar <- function(dt, x, y, z) {
   dt  |>
-    ggplot() +
-    aes(x = x, fill = z, weight = y) +
-    geom_bar() +
-    labs(y = "",x =
+    ggplot2::ggplot() +
+    ggplot2::aes(x = x, fill = z, weight = y) +
+    ggplot2::geom_bar() +
+    ggplot2::labs(y = "",x =
            #"Дата выручки (показа рекламы)"
            "Revenue date (impression showed)"
          ,fill = " ")+
-    scale_fill_hue(direction = 1) +
-    theme_minimal()
+    ggplot2::scale_fill_hue(direction = 1) +
+    ggplot2::theme_minimal()
 }
 
 # возвращает echarts - для интерактивных визуализаций ---------------------
@@ -173,29 +173,34 @@ viz_bar <- function(dt, x, y, z) {
 viz_lines_js <- function(dt, x, y, title="",title_x="") {
   #print(deparse(substitute(x)))
   dt |>
-    e_charts_(x) |>
-    e_line_(y,symbol ="none") |>
-    e_datazoom(type = "slider") |>
-    e_tooltip(trigger = "axis") |>
-    e_title(title, "USD")
+    echarts4r::e_charts_(x) |>
+    echarts4r::e_line_(y,symbol ="none") |>
+    echarts4r::e_datazoom(type = "slider") |>
+    echarts4r::e_tooltip(trigger = "axis") |>
+    echarts4r::e_title(title, "USD")
 }
 
 viz_lines_wide_js <- function(dt, x, y1,y2, title="",title_x="") {
   #print(deparse(substitute(x)))
   dt |>
-    e_charts_(x) |>
-    e_line_(y1,symbol ="none") |>
-    e_line_(y2,symbol ="none") |>
-    e_datazoom(type = "slider") |>
-    e_tooltip(trigger = "axis") |>
-    e_title(title, "USD")
+    echarts4r::e_charts_(x) |>
+    echarts4r::e_line_(y1,symbol ="none") |>
+    echarts4r::e_line_(y2,symbol ="none") |>
+    echarts4r::e_datazoom(type = "slider") |>
+    echarts4r::e_tooltip(trigger = "axis") |>
+    echarts4r::e_title(title, "USD")
 }
+
+# data()
+# txhousing |> viz_lines_wide4_js("year")
+# storms |> mutate(d=lub)
+# https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example/5963610#5963610
 
 #' Vizualisation with JavaScript: 4 lines from wide table with 4 columns for each measure
 #'
 #' @param dt
 #' @param x  X axis
-#' @param y1 column name for first measure
+#' @param y1 column name for first measure, in quotes like "measure1"
 #' @param y2
 #' @param y3
 #' @param y4
@@ -205,7 +210,15 @@ viz_lines_wide_js <- function(dt, x, y1,y2, title="",title_x="") {
 #' @return
 #' @export
 #'
-#' @examples
+#' @examples # viz_lines_wide4_js(x = "floor_date",y1 = "amount",y2="cogs",y3="profit",y4="amount_discount",
+#' n <- 30
+#' data.frame(date=seq(as.Date("2020-12-26"), by="day",length.out=30),
+#'            x1=rnorm(n),
+#'            x2=rnorm(n),
+#'            x3=rnorm(n),
+#'            x4=rnorm(n)
+#' ) |>
+#'   viz_lines_wide4_js("date","x1","x2","x3","x4")
 viz_lines_wide4_js <- function(dt, x, y1,y2,y3,y4, title="",title_x="") {
   #print(deparse(substitute(x)))
   dt |>

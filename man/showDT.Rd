@@ -2,7 +2,7 @@
 % Please edit documentation in R/tbl.R
 \name{showDT}
 \alias{showDT}
-\title{Заполнить таблицу DT данными в колонках}
+\title{Fill table DT with data in columns}
 \usage{
 showDT(tbl, dt_caption)
 }
@@ -15,7 +15,7 @@ showDT(tbl, dt_caption)
 
 }
 \description{
-Заполнить таблицу DT данными в колонках
+Fill table DT with data in columns
 }
 \examples{
  # dt |> showDT('')

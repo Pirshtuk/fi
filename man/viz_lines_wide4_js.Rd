@@ -9,7 +9,7 @@ viz_lines_wide4_js(dt, x, y1, y2, y3, y4, title = "", title_x = "")
 \arguments{
 \item{x}{X axis}
 
-\item{y1}{column name for first measure}
+\item{y1}{column name for first measure, in quotes like "measure1"}
 
 \item{title}{title for Vizualisation}
 
@@ -20,4 +20,15 @@ viz_lines_wide4_js(dt, x, y1, y2, y3, y4, title = "", title_x = "")
 }
 \description{
 Vizualisation with JavaScript: 4 lines from wide table with 4 columns for each measure
+}
+\examples{
+# viz_lines_wide4_js(x = "floor_date",y1 = "amount",y2="cogs",y3="profit",y4="amount_discount",
+n <- 30
+data.frame(date=seq(as.Date("2020-12-26"), by="day",length.out=30),
+           x1=rnorm(n),
+           x2=rnorm(n),
+           x3=rnorm(n),
+           x4=rnorm(n)
+) |>
+  viz_lines_wide4_js("date","x1","x2","x3","x4")
 }

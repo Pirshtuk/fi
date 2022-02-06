@@ -48,7 +48,7 @@ datatable2 <- function(x, vars = NULL, opts = NULL, ...) {
   )
 }
 
-#' Внутренняя
+#' Internal
 #'
 #' @param x
 #' @param pos
@@ -78,7 +78,9 @@ callback2 <- function(x, pos = NULL) {
   paste(part1, part2, part3)
 }
 
-#' Внутренняя
+# Внутренняя
+
+#' Internal
 #'
 #' @param x
 #' @param pos
@@ -117,10 +119,10 @@ datatable2_test <- function(x) {
 }
 
 # Возвращает объект DT, готовый для отображения -------------------------------
-
 # поиск, перемещение столбцов, кнопки, заголовок
+# Заполнить таблицу DT данными в колонках
 
-#' Заполнить таблицу DT данными в колонках
+#' Fill table DT with data in columns
 #'
 #'
 #' @param tbl таблица с колонками to_date,forecast,diff
@@ -164,8 +166,9 @@ showDT <- function(tbl, dt_caption) {
     formatStyle(grep('Откл',colnames(df_wide)),backgroundColor='Azure')
 }
 
+# Заполнить таблицу DT данными в колонках с названиями ...
 
-#' Заполнить таблицу DT данными в колонках с названиями ...
+#' Fill table DT with data in columns with given names
 #'
 #' @param tbl
 #' @param dt_caption

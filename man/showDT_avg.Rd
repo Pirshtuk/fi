@@ -2,7 +2,7 @@
 % Please edit documentation in R/tbl.R
 \name{showDT_avg}
 \alias{showDT_avg}
-\title{Заполнить таблицу DT данными в колонках с названиями ...}
+\title{Fill table DT with data in columns with given names}
 \usage{
 showDT_avg(tbl, dt_caption)
 }
@@ -13,7 +13,7 @@ showDT_avg(tbl, dt_caption)
 
 }
 \description{
-Заполнить таблицу DT данными в колонках с названиями ...
+Fill table DT with data in columns with given names
 }
 \examples{
 # dt |> showDT_avg('')

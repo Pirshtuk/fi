@@ -24,11 +24,7 @@ basic visualization function that wraps ggplot2 code
 but allows users to input their preferred x-axis, y-axis and grouping variables to draw cohort curves.
 }
 \examples{
-viz_cohort(my_org_data)
-          viz_cohort(my_org_data, color = COHORT, linetype = COHORT)
+#viz_cohort("my_org_data")
+          #viz_cohort("my_org_data", color = COHORT, linetype = COHORT)
 
-          my_org_data \%>\%
-            mutate(COHORT_QUARTER = quarter(DATE_COHORT_START)) \%>\%
-            viz_cohort(my_org_data) +
-            facet_grid(rows = vars(COHORT_QUARTER))
 }
