@@ -137,7 +137,7 @@ showDT <- function(tbl, dt_caption) {
            "План"=forecast_cum,
            "Откл"=diff,
            'Рекламная кампания'=campaign_name) |>
-    pivot_wider(names_from = life_day,values_from = c(Факт,План,Откл)) -> df_wide
+    pivot_wider(names_from = life_day,values_from = c('Факт','План','Откл')) -> df_wide
   df_wide |>
     #filter(to_date_7>0.01) %>%
     datatable(
